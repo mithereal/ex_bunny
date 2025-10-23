@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="ELIXIR_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bunny_cdn" level="project" />
+    <orderEntry type="library" name="bunny_cdn_signer" level="project" />
+    <orderEntry type="library" name="req" level="project" />
+    <orderEntry type="library" name="ex_doc" level="project" />
+    <orderEntry type="library" name="bypass" level="project" />
+    <orderEntry type="library" name="finch" level="project" />
+    <orderEntry type="library" name="mime" level="project" />
+    <orderEntry type="library" name="jason" level="project" />
+    <orderEntry type="library" name="nimble_csv" level="project" />
+    <orderEntry type="library" name="plug" level="project" />
+    <orderEntry type="library" name="brotli" level="project" />
+    <orderEntry type="library" name="ezstd" level="project" />
+    <orderEntry type="library" name="aws_signature" level="project" />
+    <orderEntry type="library" name="bandit" level="project" />
+    <orderEntry type="library" name="castore" level="project" />
+    <orderEntry type="library" name="mint" level="project" />
+    <orderEntry type="library" name="nimble_pool" level="project" />
+    <orderEntry type="library" name="nimble_options" level="project" />
+    <orderEntry type="library" name="telemetry" level="project" />
+    <orderEntry type="library" name="credo" level="project" />
+    <orderEntry type="library" name="dialyxir" level="project" />
+    <orderEntry type="library" name="cowboy" level="project" />
+    <orderEntry type="library" name="plug_cowboy" level="project" />
+    <orderEntry type="library" name="x509" level="project" />
+    <orderEntry type="library" name="mimic" level="project" />
+    <orderEntry type="library" name="hpax" level="project" />
+    <orderEntry type="library" name="excoveralls" level="project" />
+    <orderEntry type="library" name="mox" level="project" />
+    <orderEntry type="library" name="stream_data" level="project" />
+    <orderEntry type="library" name="hpack" level="project" />
+    <orderEntry type="library" name="oapi_generator" level="project" />
+    <orderEntry type="library" name="multipart" level="project" />
+    <orderEntry type="library" name="meck" level="project" />
+    <orderEntry type="library" name="mock" level="project" />
+    <orderEntry type="library" name="sax_map" level="project" />
+    <orderEntry type="library" name="saxy" level="project" />
+  </component>
+</module>

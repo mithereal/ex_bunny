@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.Region do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Region codes.
@@ -16,6 +17,6 @@ defmodule Bunny.Net.Api.Region do
   """
   def list() do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/region", nil, [])
+    |> Request.request("get", "https://api.bunny.net/region", nil, [])
   end
 end

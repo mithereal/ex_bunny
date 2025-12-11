@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Scripting.Variable do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Scripting.Variable.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Scripting.Variable do
   ## Examples
 
       iex> update("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/compute/script/#{id}",
       Jason.encode!(params),
@@ -30,12 +31,12 @@ defmodule Bunny.Net.Scripting.Variable do
   ## Examples
 
       iex> upsert("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def upsert(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "put",
       "https://api.bunny.net/compute/script/#{id}/variables",
       Jason.encode!(params),
@@ -49,12 +50,12 @@ defmodule Bunny.Net.Scripting.Variable do
   ## Examples
 
       iex> get("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(id, variableId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/compute/script/#{id}/variables/#{variableId}",
       nil,
@@ -68,12 +69,12 @@ defmodule Bunny.Net.Scripting.Variable do
   ## Examples
 
       iex> create("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def create(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/compute/script/#{id}/variables/add",
       Jason.encode!(params),
@@ -87,12 +88,12 @@ defmodule Bunny.Net.Scripting.Variable do
   ## Examples
 
       iex> delete("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(id, variableId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/compute/script/#{id}/variables/#{variableId}",
       nil,

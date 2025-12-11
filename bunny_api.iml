@@ -2,7 +2,16 @@
 <module type="ELIXIR_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/earmark_parser" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ex_doc" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/excoveralls" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/jason" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/makeup" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/makeup_elixir" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/makeup_erlang" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/nimble_parsec" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bunny_cdn" level="project" />
@@ -41,5 +50,16 @@
     <orderEntry type="library" name="mock" level="project" />
     <orderEntry type="library" name="sax_map" level="project" />
     <orderEntry type="library" name="saxy" level="project" />
+    <orderEntry type="library" name="earmark_parser" level="project" />
+    <orderEntry type="library" name="makeup_elixir" level="project" />
+    <orderEntry type="library" name="makeup_erlang" level="project" />
+    <orderEntry type="library" name="makeup_c" level="project" />
+    <orderEntry type="library" name="makeup_html" level="project" />
+    <orderEntry type="library" name="lazy_html" level="project" />
+    <orderEntry type="library" name="makeup" level="project" />
+    <orderEntry type="library" name="nimble_parsec" level="project" />
+    <orderEntry type="library" name="unicode_set" level="project" />
+    <orderEntry type="library" name="benchee" level="project" />
+    <orderEntry type="library" name="benchee_markdown" level="project" />
   </component>
 </module>

@@ -1,6 +1,6 @@
 # BunnyApi
 
-#### WIP feature complete client for (https://docs.bunny.net/reference)
+#### Feature complete client for (https://docs.bunny.net/reference)
 
 ### Features Completed
 

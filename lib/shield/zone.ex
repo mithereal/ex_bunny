@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.Zone do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.Zone.
@@ -13,12 +14,12 @@ defmodule Bunny.Net.Shield.Zone do
   ## Examples
 
       iex> list()
-      {:ok,%{}}
+
 
   """
   def list(page \\ 1, per_page \\ @default_per_page) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/shield-zones",
       nil,

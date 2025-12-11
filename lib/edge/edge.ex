@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Edge do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Edge.
@@ -16,7 +17,7 @@ defmodule Bunny.Net.Edge do
   """
   def list(storageZoneName, path) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://storage.bunnycdn.com/#{storageZoneName}/#{path}",
       nil,
@@ -30,12 +31,12 @@ defmodule Bunny.Net.Edge do
   ## Examples
 
       iex> download("name", "/app/priv", "xxx.md")
-      {:ok,%{}}
+
 
   """
   def download(storageZoneName, path, fileName) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://storage.bunnycdn.com/#{storageZoneName}/#{path}/#{fileName}",
       nil,
@@ -49,12 +50,12 @@ defmodule Bunny.Net.Edge do
   ## Examples
 
       iex> delete("name", "/app/priv", "xxx.md")
-     {:ok,%{}}
+
 
   """
   def delete(storageZoneName, path, fileName) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://storage.bunnycdn.com/#{storageZoneName}/#{path}/#{fileName}",
       nil,
@@ -68,18 +69,18 @@ defmodule Bunny.Net.Edge do
   ## Examples
 
       iex> upload("zone_name", "region_east", "xxx.md", "string")
-      {:ok,%{}}
+
 
   """
   def upload(storageZoneName, region, filename, data) do
     fileExt = extension(filename)
 
     options = [
-      form_multipart: [file: {contents, filename: filename}]
+      form_multipart: [file: {data, filename: filename}]
     ]
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "put",
       "https://#{region}.bunnycdn.com/#{storageZoneName}/#{fileExt}",
       nil,

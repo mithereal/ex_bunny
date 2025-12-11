@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.DnsZone do
   alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   The list of DNS Zones on the account.
@@ -24,7 +25,7 @@ defmodule Bunny.Net.Api.DnsZone do
       end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/dnszone",
       nil,
@@ -38,12 +39,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> add("xxx.com")
-      {:ok,%{}}
+
 
   """
   def add(domain) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/dnszone", Jason.encode!(domain), [])
+    |> Request.request("post", "https://api.bunny.net/dnszone", Jason.encode!(domain), [])
   end
 
   @doc """
@@ -52,12 +53,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> add_record("1111-1111-1111-1111",%{})
-      {:ok,%{}}
+
 
   """
   def add_record(zone_id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "put",
       "https://api.bunny.net/dnszone/zoneId/records",
       Jason.encode!(params),
@@ -71,12 +72,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> update("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def update(id, params) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/dnszone/#{id}", Jason.encode!(params), [])
+    |> Request.request("post", "https://api.bunny.net/dnszone/#{id}", Jason.encode!(params), [])
   end
 
   @doc """
@@ -85,12 +86,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> update("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/dnszone/#{id}", nil, [])
+    |> Request.request("get", "https://api.bunny.net/dnszone/#{id}", nil, [])
   end
 
   @doc """
@@ -99,12 +100,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> check_availability(%{})
-     {:ok,%{}}
+
 
   """
   def check_availability(params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/dnszone/checkavailability",
       Jason.encode!(params),
@@ -118,12 +119,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> delete("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(id) do
     Client.new!()
-    |> Bunny.Net.request("delete", "https://api.bunny.net/dnszone/#{id}", nil, [])
+    |> Request.request("delete", "https://api.bunny.net/dnszone/#{id}", nil, [])
   end
 
   @doc """
@@ -132,12 +133,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> enable_dnssec("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def enable_dnssec(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/dnszone/#{id}/dnssec", nil, [])
+    |> Request.request("get", "https://api.bunny.net/dnszone/#{id}/dnssec", nil, [])
   end
 
   @doc """
@@ -146,12 +147,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> disable_dnssec("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def disable_dnssec(id) do
     Client.new!()
-    |> Bunny.Net.request("delete", "https://api.bunny.net/dnszone/#{id}/dnssec", nil, [])
+    |> Request.request("delete", "https://api.bunny.net/dnszone/#{id}/dnssec", nil, [])
   end
 
   @doc """
@@ -160,12 +161,12 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> export("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def export(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/dnszone/#{id}/export", nil, [])
+    |> Request.request("get", "https://api.bunny.net/dnszone/#{id}/export", nil, [])
   end
 
   @doc """
@@ -174,13 +175,13 @@ defmodule Bunny.Net.Api.DnsZone do
   ## Examples
 
       iex> statistics("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def statistics(id, dateFrom, dateTo) do
     options = [dateFrom: dateFrom, dateTo: dateTo]
 
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/dnszone/#{id}/statistics", nil, [])
+    |> Request.request("get", "https://api.bunny.net/dnszone/#{id}/statistics", nil, [])
   end
 end

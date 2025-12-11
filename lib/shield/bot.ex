@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.Bot do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.Bot.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.Bot do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/bot-detection",
       nil,
@@ -30,12 +31,12 @@ defmodule Bunny.Net.Shield.Bot do
   ## Examples
 
       iex> upsert("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def upsert(shieldZoneId, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "patch",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/bot-detection",
       Jason.encode!(params),

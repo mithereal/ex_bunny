@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.RateLimit do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.RateLimit.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.RateLimit do
   ## Examples
 
       iex> get_by_zone("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get_by_zone(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/rate-limits/#{shieldZoneId}",
       nil,
@@ -30,12 +31,12 @@ defmodule Bunny.Net.Shield.RateLimit do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/rate-limit/#{id}",
       nil,
@@ -49,12 +50,12 @@ defmodule Bunny.Net.Shield.RateLimit do
   ## Examples
 
       iex> create(%{})
-      {:ok,%{}}
+
 
   """
   def create(params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/shield/rate-limit",
       Jason.encode!(params),
@@ -68,12 +69,12 @@ defmodule Bunny.Net.Shield.RateLimit do
   ## Examples
 
       iex> update("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "patch",
       "https://api.bunny.net/shield/rate-limit/#{id}",
       Jason.encode!(params),
@@ -87,12 +88,12 @@ defmodule Bunny.Net.Shield.RateLimit do
   ## Examples
 
       iex> delete("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/shield/rate-limit/#{id}",
       nil,

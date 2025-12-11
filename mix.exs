@@ -1,7 +1,7 @@
 defmodule BunnyApi.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "1.0.0"
   @source_url "https://github.com/mithereal/ex_bunny"
 
   defp package do
@@ -45,7 +45,6 @@ defmodule BunnyApi.MixProject do
 
   defp docs do
     [
-      main: "Bunny.Net",
       source_url: @source_url,
       extras: ["README.md"]
     ]
@@ -68,7 +67,8 @@ defmodule BunnyApi.MixProject do
   defp deps do
     [
       {:jason, "~> 1.4"},
-      {:excoveralls, "~> 0.14", only: [:test, :dev]}
+      {:excoveralls, "~> 0.14", only: [:test, :dev]},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 end

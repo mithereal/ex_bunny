@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.Countries do
   alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   The list of countries and tax rates.
@@ -16,6 +17,6 @@ defmodule Bunny.Net.Api.Countries do
   """
   def list() do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/country", nil, [])
+    |> Request.request("get", "https://api.bunny.net/country", nil, [])
   end
 end

@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.Statistics do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Statistics.
@@ -11,7 +12,7 @@ defmodule Bunny.Net.Api.Statistics do
   ## Examples
 
       iex> get()
-      {:ok,%{}}
+
 
   """
   def get(
@@ -49,6 +50,6 @@ defmodule Bunny.Net.Api.Statistics do
     end
 
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/statistics", nil, options)
+    |> Request.request("get", "https://api.bunny.net/statistics", nil, options)
   end
 end

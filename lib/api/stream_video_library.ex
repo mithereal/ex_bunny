@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.StreamVideoLibrary do
   alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   StreamVideoLibrary.
@@ -27,7 +28,7 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
       end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/videolibrary",
       nil,
@@ -41,12 +42,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> add(%{})
-      {:ok,%{}}
+
 
   """
   def add(params) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/videolibrary", Jason.encode!(params), [])
+    |> Request.request("post", "https://api.bunny.net/videolibrary", Jason.encode!(params), [])
   end
 
   @doc """
@@ -55,12 +56,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> update("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/#{id}",
       Jason.encode!(params),
@@ -74,12 +75,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/videolibrary/#{id}", nil, [])
+    |> Request.request("get", "https://api.bunny.net/videolibrary/#{id}", nil, [])
   end
 
   @doc """
@@ -88,12 +89,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> delete("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(id) do
     Client.new!()
-    |> Bunny.Net.request("delete", "https://api.bunny.net/videolibrary/#{id}", nil, [])
+    |> Request.request("delete", "https://api.bunny.net/videolibrary/#{id}", nil, [])
   end
 
   @doc """
@@ -102,12 +103,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> storage_zone_availability(%{})
-      {:ok,%{}}
+
 
   """
   def storage_zone_availability(params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/checkavailability",
       Jason.encode!(params),
@@ -121,12 +122,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> reset_password("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def reset_password(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/#{id}/resetPassword",
       Jason.encode!(params),
@@ -140,12 +141,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> reset_password_readonly("1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def reset_password_readonly(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/#{id}/resetReadOnlyPassword",
       Jason.encode!(params),
@@ -159,11 +160,11 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> statistics("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def statistics(id, dateFrom \\ nil, dateTo \\ nil) do
-    options = [hourly: hourly]
+    options = []
 
     unless(is_nil(dateFrom)) do
       options = [dateFrom: dateFrom] ++ options
@@ -174,7 +175,7 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
     end
 
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/videolibrary/#{id}/statistics", nil, [])
+    |> Request.request("get", "https://api.bunny.net/videolibrary/#{id}/statistics", nil, [])
   end
 
   @doc """
@@ -183,12 +184,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> get_languages()
-      {:ok,%{}}
+
 
   """
   def get_languages() do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/videolibrary/languages", nil, [])
+    |> Request.request("get", "https://api.bunny.net/videolibrary/languages", nil, [])
   end
 
   @doc """
@@ -197,13 +198,13 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> add_allowed_referrer("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
 
   def add_allowed_referrer(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/#{id}/addAllowedReferrer",
       Jason.encode!(params),
@@ -217,12 +218,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> add_allowed_referrer("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def remove_allowed_referrer(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/#{id}/removeAllowedReferrer",
       Jason.encode!(params),
@@ -236,12 +237,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> add_blocked_referrer("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def add_blocked_referrer(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/#{id}/addBlockedReferrer",
       Jason.encode!(params),
@@ -255,12 +256,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> remove_blocked_referrer("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def remove_blocked_referrer(id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/videolibrary/#{id}/removeBlockedReferrer",
       nil,
@@ -274,12 +275,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> add_watermark("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def add_watermark(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/videolibrary/#{id}/watermark",
       Jason.encode!(params),
@@ -293,12 +294,12 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> remove_watermark("1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def remove_watermark(id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/videolibrary/#{id}/removeBlockedReferrer",
       nil,
@@ -312,7 +313,7 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> drm_statistics("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def drm_statistics(id, dateFrom \\ nil, dateTo \\ nil) do
@@ -327,7 +328,7 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
     end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/videolibrary/#{id}/drm/statistics",
       nil,
@@ -341,7 +342,7 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
   ## Examples
 
       iex> transcribing_statistics("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def transcribing_statistics(id, dateFrom \\ nil, dateTo \\ nil) do
@@ -356,7 +357,7 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
     end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/videolibrary/#{id}/transcribing/statistics",
       nil,

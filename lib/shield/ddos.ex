@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.Ddos do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.Ddos.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.Ddos do
   ## Examples
 
       iex> get()
-      {:ok,%{}}
+
 
   """
   def get() do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/ddos/enums",
       nil,

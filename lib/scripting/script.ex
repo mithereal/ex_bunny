@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Scripting.Script do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Scripting.Script.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Scripting.Script do
   ## Examples
 
       iex> update("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(id, params) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/compute/#{id}", Jason.encode!(params), [])
+    |> Request.request("post", "https://api.bunny.net/compute/#{id}", Jason.encode!(params), [])
   end
 
   @doc """
@@ -25,12 +26,12 @@ defmodule Bunny.Net.Scripting.Script do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/compute/script/#{id}", nil, [])
+    |> Request.request("get", "https://api.bunny.net/compute/script/#{id}", nil, [])
   end
 
   @doc """
@@ -39,12 +40,12 @@ defmodule Bunny.Net.Scripting.Script do
   ## Examples
 
       iex> create("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def create(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/compute/script/#{id}",
       Jason.encode!(params),
@@ -58,12 +59,12 @@ defmodule Bunny.Net.Scripting.Script do
   ## Examples
 
       iex> delete("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(id, deleteLinkedPullZones \\ false) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/compute/script/#{id}",
       nil,
@@ -77,11 +78,11 @@ defmodule Bunny.Net.Scripting.Script do
   ## Examples
 
       iex> statistics("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def statistics(id, dateFrom \\ nil, dateTo \\ nil, loadLatest \\ false) do
-    options = [hourly: hourly, loadLatest: loadLatest]
+    options = [loadLatest: loadLatest]
 
     unless(is_nil(dateFrom)) do
       options = [dateFrom: dateFrom] ++ options
@@ -92,7 +93,7 @@ defmodule Bunny.Net.Scripting.Script do
     end
 
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/compute/script/#{id}/statistics", nil, [])
+    |> Request.request("get", "https://api.bunny.net/compute/script/#{id}/statistics", nil, [])
   end
 
   @doc """
@@ -101,12 +102,12 @@ defmodule Bunny.Net.Scripting.Script do
   ## Examples
 
       iex> rotate_deployment_key("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def rotate_deployment_key(id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/compute/script/#{id}/deploymentKey/rotate",
       nil,

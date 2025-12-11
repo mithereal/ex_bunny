@@ -21,14 +21,12 @@ defmodule Bunny.Net.Client.Client do
                             :endpoint,
                             "la.storage.bunnycdn.com"
                           )
-  @bunny_storage_zone Application.compile_env(:bunny_net, :storage_zone, "")
-  @bunny_storage_api_key Application.compile_env(:bunny_net, :storage_api_key, "")
-  @bunny_net_key Application.compile_env(:bunny_net, :api_key, "")
+  @bunny_storage_zone Application.compile_env(:bunny_net, :storage_zone, nil)
+  @bunny_net_key Application.compile_env(:bunny_net, :api_key, nil)
 
   @type t :: %__MODULE__{
           endpoint: binary() | nil,
           storage_zone: binary() | nil,
-          storage_api_key: binary() | nil,
           api_key: binary() | nil,
           http_client: {module(), keyword()}
         }
@@ -36,8 +34,9 @@ defmodule Bunny.Net.Client.Client do
   defstruct endpoint: nil,
             storage_zone: nil,
             api_key: nil,
-            storage_api_key: nil,
             http_client: {Bunny.Net.Adapter.Req, []}
+
+  alias Bunny.Net.Client.Client
 
   def new!() do
     case System.get_env(@bunny_default_endpoint) do
@@ -47,18 +46,23 @@ defmodule Bunny.Net.Client.Client do
   end
 
   def new!(endpoint) do
-    case {System.get_env(@bunny_storage_zone), System.get_env(@bunny_storage_api_key)} do
-      {nil, _} -> raise RuntimeError, "missing storage zone"
-      {_, nil} -> raise RuntimeError, "missing api key"
-      {storage_zone, storage_api_key} -> new(endpoint, storage_zone, storage_api_key)
+    case {System.get_env(@bunny_storage_zone), System.get_env(@bunny_api_key)} do
+      {nil, _} ->
+        raise RuntimeError, "missing storage zone"
+
+      {_, nil} ->
+        raise RuntimeError, "missing zone api key"
+
+      {storage_zone, api_key} ->
+        new(endpoint, storage_zone, api_key)
     end
   end
 
-  def new(endpoint, storage_zone, storage_api_key) do
-    %Bunny.Net.Client{
+  def new(endpoint, storage_zone, api_key) do
+    %Client{
       endpoint: endpoint,
       storage_zone: storage_zone,
-      storage_api_key: storage_api_key
+      api_key: api_key
     }
   end
 

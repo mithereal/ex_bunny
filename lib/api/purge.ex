@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.Purge do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Purge Cache.
@@ -11,11 +12,11 @@ defmodule Bunny.Net.Api.Purge do
   ## Examples
 
       iex> purge("xxx.com")
-      {:ok,%{}}
+
 
   """
   def purge(url, async \\ false) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/purge", nil, url: url, async: async)
+    |> Request.request("get", "https://api.bunny.net/purge", nil, url: url, async: async)
   end
 end

@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.PullZone do
   alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   The list of all the pull zones on the account.
@@ -27,7 +28,7 @@ defmodule Bunny.Net.Api.PullZone do
       end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/pullzone",
       nil,
@@ -41,12 +42,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> add(%{})
-      {:ok,%{}}
+
 
   """
   def add(params) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/pullzone", Jason.encode!(params), [])
+    |> Request.request("post", "https://api.bunny.net/pullzone", Jason.encode!(params), [])
   end
 
   @doc """
@@ -55,12 +56,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> update("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def update(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}",
       Jason.encode!(params),
@@ -74,12 +75,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def get(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/pullzone/#{id}", nil, [])
+    |> Request.request("get", "https://api.bunny.net/pullzone/#{id}", nil, [])
   end
 
   @doc """
@@ -88,12 +89,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> delete("1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def delete(id) do
     Client.new!()
-    |> Bunny.Net.request("delete", "https://api.bunny.net/pullzone/#{id}", nil, [])
+    |> Request.request("delete", "https://api.bunny.net/pullzone/#{id}", nil, [])
   end
 
   @doc """
@@ -102,7 +103,7 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> origin_shield("1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def origin_shield(id, dateFrom \\ nil, dateTo \\ nil, hourly \\ false) do
@@ -117,7 +118,7 @@ defmodule Bunny.Net.Api.PullZone do
     end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/pullzone/#{id}/originshield/queuestatistics",
       nil,
@@ -131,7 +132,7 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> safe_hop("1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def safe_hop(id, dateFrom \\ nil, dateTo \\ nil, hourly \\ false) do
@@ -146,7 +147,7 @@ defmodule Bunny.Net.Api.PullZone do
     end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/pullzone/#{id}/safehop/statistics",
       nil,
@@ -160,7 +161,7 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> optimizer("1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def optimizer(id, dateFrom \\ nil, dateTo \\ nil, hourly \\ false) do
@@ -175,7 +176,7 @@ defmodule Bunny.Net.Api.PullZone do
     end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/pullzone/#{id}/optimizer/statistics",
       nil,
@@ -189,14 +190,14 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> load_free_certificate("xxx.com")
-     {:ok,%{}}
+
 
   """
   def load_free_certificate(hostname) do
     options = [hostname: hostname]
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/pullzone/loadFreeCertificate",
       nil,
@@ -210,12 +211,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> edge_rule("1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def edge_rule(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/edgerules/addOrUpdate",
       Jason.encode!(params),
@@ -229,12 +230,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> enable_edge_rule("1111-1111-1111-1111", "1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def enable_edge_rule(pullZoneId, id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "pullzone/#{pullZoneId}/edgerules/#{id}/setEdgeRuleEnabled",
       Jason.encode!(params),
@@ -248,12 +249,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> purge_cache("1111-1111-1111-1111",  %{})
-     {:ok,%{}}
+
 
   """
   def purge_cache(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/purgeCache",
       Jason.encode!(params),
@@ -267,12 +268,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> pull_zone_availability(%{})
-     {:ok,%{}}
+
 
   """
   def pull_zone_availability(params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/checkavailability",
       Jason.encode!(params),
@@ -286,12 +287,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> add_certificate("1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def add_certificate(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/purgeCache",
       Jason.encode!(params),
@@ -305,12 +306,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> add_hostname("1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def add_hostname(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/addHostname",
       Jason.encode!(params),
@@ -324,12 +325,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> force_ssl("1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def force_ssl(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/setForceSSL",
       Jason.encode!(params),
@@ -343,12 +344,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> reset_token_key("1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def reset_token_key(id) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/pullzone/#{id}/resetSecurityKey", nil, [])
+    |> Request.request("post", "https://api.bunny.net/pullzone/#{id}/resetSecurityKey", nil, [])
   end
 
   @doc """
@@ -357,12 +358,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> add_allowed_referrer("1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def add_allowed_referrer(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/addAllowedReferrer",
       Jason.encode!(params),
@@ -376,12 +377,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> remove_allowed_referrer("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def remove_allowed_referrer(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/removeAllowedReferrer",
       Jason.encode!(params),
@@ -395,12 +396,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> add_blocked_referrer("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def add_blocked_referrer(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/addBlockedReferrer",
       Jason.encode!(params),
@@ -414,12 +415,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> remove_blocked_referrer("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def remove_blocked_referrer(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/removeBlockedReferrer",
       Jason.encode!(params),
@@ -433,12 +434,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> add_blocked_ip("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def add_blocked_ip(id, params) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/pullzone/#{id}/addBlockedIp", params, [])
+    |> Request.request("post", "https://api.bunny.net/pullzone/#{id}/addBlockedIp", params, [])
   end
 
   @doc """
@@ -447,12 +448,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> remove_blocked_ip("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def remove_blocked_ip(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/pullzone/#{id}/removeBlockedIp",
       Jason.encode!(params),
@@ -466,12 +467,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> delete_edge_rule("1111-1111-1111-1111","1111-1111-1111-1111")
-     {:ok,%{}}
+
 
   """
   def delete_edge_rule(pullZoneId, id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/pullzone/#{pullZoneId}/edgerules/#{id}",
       nil,
@@ -485,12 +486,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> remove_certificate("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def remove_certificate(pullZoneId, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/pullzone/#{pullZoneId}/removeCertificate",
       Jason.encode!(params),
@@ -504,12 +505,12 @@ defmodule Bunny.Net.Api.PullZone do
   ## Examples
 
       iex> remove_custom_hostname("1111-1111-1111-1111",%{})
-     {:ok,%{}}
+
 
   """
   def remove_custom_hostname(pullZoneId, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/pullzone/#{pullZoneId}/removeHostname",
       Jason.encode!(params),

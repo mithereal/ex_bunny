@@ -1,6 +1,8 @@
-# BunnyApi
+# Bunny API Client
 
-#### WIP feature complete client for (https://docs.bunny.net/reference)
+[![wakatime](https://wakatime.com/badge/user/8fd2cce9-a3a2-45d1-b846-dc86b1dc3e59/project/06aead55-31e2-4c2d-83fb-9b6956ed85c7.svg)](https://wakatime.com/badge/user/8fd2cce9-a3a2-45d1-b846-dc86b1dc3e59/project/06aead55-31e2-4c2d-83fb-9b6956ed85c7)
+
+#### Feature complete client for (https://docs.bunny.net/reference)
 
 ### Features Completed
 

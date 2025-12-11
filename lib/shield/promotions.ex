@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.Promotions do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.Promotions.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.Promotions do
   ## Examples
 
       iex> list()
-      {:ok,%{}}
+
 
   """
   def list() do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/promo/state",
       nil,

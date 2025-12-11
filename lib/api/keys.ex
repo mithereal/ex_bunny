@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.Keys do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   The list of all API keys on the account.
@@ -16,6 +17,6 @@ defmodule Bunny.Net.Api.Keys do
   """
   def list() do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/apikey", nil, [])
+    |> Request.request("get", "https://api.bunny.net/apikey", nil, [])
   end
 end

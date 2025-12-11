@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.Metrics do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.Metrics.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.Metrics do
   ## Examples
 
       iex> overview("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def overview(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/metrics/overview/#{shieldZoneId}",
       nil,
@@ -30,12 +31,12 @@ defmodule Bunny.Net.Shield.Metrics do
   ## Examples
 
       iex> rate_limits("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def rate_limits(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/metrics/rate-limits/#{shieldZoneId}",
       nil,
@@ -49,12 +50,12 @@ defmodule Bunny.Net.Shield.Metrics do
   ## Examples
 
       iex> rate_limit("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def rate_limit(id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/metrics/rate-limit/#{id}",
       nil,
@@ -68,12 +69,12 @@ defmodule Bunny.Net.Shield.Metrics do
   ## Examples
 
       iex> rule("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def rule(shieldZoneId, ruleId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/metrics/shield-zone/#{shieldZoneId}/waf-rule/#{ruleId}",
       nil,
@@ -87,12 +88,12 @@ defmodule Bunny.Net.Shield.Metrics do
   ## Examples
 
       iex> rule("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def bot_detection(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/metrics/shield-zone/#{shieldZoneId}/bot-detection",
       nil,
@@ -106,12 +107,12 @@ defmodule Bunny.Net.Shield.Metrics do
   ## Examples
 
       iex> upload_scanning("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def upload_scanning(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/metrics/shield-zone/#{shieldZoneId}/upload-scanning",
       nil,

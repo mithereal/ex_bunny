@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Stream.Ombed do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Stream.Ombed.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Stream.Ombed do
   ## Examples
 
       iex> get("xxx.com")
-      {:ok,%{}}
+
 
   """
   def get(url \\ nil, maxWidth \\ nil, maxHeight \\ nil, token \\ nil, expires \\ 0) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/OEmbed",
       nil,

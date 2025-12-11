@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.Logs do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.Logs.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.Logs do
   ## Examples
 
       iex> get("1111-1111-1111-1111", DateTime.utc_now(), "token")
-      {:ok,%{}}
+
 
   """
   def get(shieldZoneId, date, continuationToken) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/event-logs/#{shieldZoneId}/#{date}/#{continuationToken}",
       nil,

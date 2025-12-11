@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Stream.StreamCollections do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Stream.StreamCollections.
@@ -13,7 +14,7 @@ defmodule Bunny.Net.Stream.StreamCollections do
   ## Examples
 
       iex> list("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def list(
@@ -40,7 +41,7 @@ defmodule Bunny.Net.Stream.StreamCollections do
       end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/collections",
       nil,
@@ -54,12 +55,12 @@ defmodule Bunny.Net.Stream.StreamCollections do
   ## Examples
 
       iex> add("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def add(libraryId, data) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/collections",
       data,
@@ -73,12 +74,12 @@ defmodule Bunny.Net.Stream.StreamCollections do
   ## Examples
 
       iex> get("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(libraryId, collectionId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/collections/#{collectionId}",
       nil,
@@ -92,12 +93,12 @@ defmodule Bunny.Net.Stream.StreamCollections do
   ## Examples
 
       iex> delete("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(libraryId, collectionId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://video.bunnycdn.com/library/#{libraryId}/collections/#{collectionId}",
       nil,
@@ -111,12 +112,12 @@ defmodule Bunny.Net.Stream.StreamCollections do
   ## Examples
 
       iex> update("1111-1111-1111-1111", "1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(libraryId, collectionId, data) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/collections/#{collectionId}",
       data,

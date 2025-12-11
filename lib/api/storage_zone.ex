@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Api.StorageZone do
   alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   StorageZones.
@@ -27,7 +28,7 @@ defmodule Bunny.Net.Api.StorageZone do
       end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/storagezone",
       nil,
@@ -41,12 +42,12 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> add(%{})
-      {:ok,%{}}
+
 
   """
   def add(params) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/storagezone", params, [])
+    |> Request.request("post", "https://api.bunny.net/storagezone", params, [])
   end
 
   @doc """
@@ -55,12 +56,12 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> update("1111-1111-1111-1111", %{})
-     {:ok,%{}}
+
 
   """
   def update(id, params) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/storagezone/#{id}", params, [])
+    |> Request.request("post", "https://api.bunny.net/storagezone/#{id}", params, [])
   end
 
   @doc """
@@ -69,12 +70,12 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/storagezone/#{id}", nil, [])
+    |> Request.request("get", "https://api.bunny.net/storagezone/#{id}", nil, [])
   end
 
   @doc """
@@ -83,12 +84,12 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> delete("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(id) do
     Client.new!()
-    |> Bunny.Net.request("delete", "https://api.bunny.net/storagezone/#{id}", nil, [])
+    |> Request.request("delete", "https://api.bunny.net/storagezone/#{id}", nil, [])
   end
 
   @doc """
@@ -97,12 +98,12 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> storage_zone_availability("zone name")
-      {:ok,%{}}
+
 
   """
   def storage_zone_availability(name) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/storagezone/checkavailability", name, [])
+    |> Request.request("post", "https://api.bunny.net/storagezone/checkavailability", name, [])
   end
 
   @doc """
@@ -111,12 +112,12 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> reset_password("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def reset_password(id) do
     Client.new!()
-    |> Bunny.Net.request("post", "https://api.bunny.net/storagezone/#{id}/resetPassword", nil, [])
+    |> Request.request("post", "https://api.bunny.net/storagezone/#{id}/resetPassword", nil, [])
   end
 
   @doc """
@@ -125,12 +126,12 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> reset_password("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def reset_password_readonly(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/storagezone/#{id}/resetReadOnlyPassword",
       Jason.encode!(params),
@@ -144,11 +145,11 @@ defmodule Bunny.Net.Api.StorageZone do
   ## Examples
 
       iex> statistics("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def statistics(id, dateFrom \\ nil, dateTo \\ nil) do
-    options = [hourly: hourly]
+    options = []
 
     unless(is_nil(dateFrom)) do
       options = [dateFrom: dateFrom] ++ options
@@ -159,6 +160,6 @@ defmodule Bunny.Net.Api.StorageZone do
     end
 
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/storagezone/#{id}/statistics", nil, [])
+    |> Request.request("get", "https://api.bunny.net/storagezone/#{id}/statistics", nil, [])
   end
 end

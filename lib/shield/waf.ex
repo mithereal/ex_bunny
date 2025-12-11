@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.Waf do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.Waf.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/rules/review-triggered/#{shieldZoneId}",
       nil,
@@ -30,12 +31,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> action("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def action(shieldZoneId, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/shield/waf/rules/review-triggered/#{shieldZoneId}",
       params,
@@ -49,12 +50,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> recommendation("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def recommendation(shieldZoneId, ruleId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/rules/review-triggered/ai-recommendation/#{shieldZoneId}/#{ruleId}",
       nil,
@@ -68,12 +69,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> custom_rules("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def custom_rules(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/custom-rules/#{shieldZoneId}",
       nil,
@@ -87,12 +88,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> custom_rule("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def custom_rule(id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/custom-rule/#{id}",
       nil,
@@ -106,12 +107,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> update_custom_rule("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update_custom_rule(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "put",
       "https://api.bunny.net/shield/waf/custom-rule/#{id}",
       params,
@@ -125,12 +126,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> update_custom_rule("1111-1111-1111-1111", %{}, :patch)
-      {:ok,%{}}
+
 
   """
   def update_custom_rule(id, params, :patch) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "patch",
       "https://api.bunny.net/shield/waf/custom-rule/#{id}",
       params,
@@ -144,12 +145,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> delete_custom_rule("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def delete_custom_rule(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/shield/waf/custom-rule/#{id}",
       Jason.encode!(params),
@@ -163,12 +164,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> profiles()
-      {:ok,%{}}
+
 
   """
   def profiles() do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/profiles",
       nil,
@@ -182,12 +183,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> rules("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def rules(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/rules/#{shieldZoneId}",
       nil,
@@ -201,12 +202,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> rule_segmentation()
-      {:ok,%{}}
+
 
   """
   def rule_segmentation() do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/rules/plan-segmentation",
       nil,
@@ -220,12 +221,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> enums()
-      {:ok,%{}}
+
 
   """
   def enums() do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/enums",
       nil,
@@ -239,12 +240,12 @@ defmodule Bunny.Net.Shield.Waf do
   ## Examples
 
       iex> configuration()
-      {:ok,%{}}
+
 
   """
   def configuration() do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/waf/engine-config",
       nil,

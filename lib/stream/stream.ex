@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Stream.Stream do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Stream.Stream.
@@ -13,7 +14,7 @@ defmodule Bunny.Net.Stream.Stream do
   ## Examples
 
       iex> list("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def list(
@@ -40,7 +41,7 @@ defmodule Bunny.Net.Stream.Stream do
       end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/live",
       nil,
@@ -54,12 +55,12 @@ defmodule Bunny.Net.Stream.Stream do
   ## Examples
 
       iex> add("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def add(libraryId, data) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/live",
       data,
@@ -73,12 +74,12 @@ defmodule Bunny.Net.Stream.Stream do
   ## Examples
 
       iex> get("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{videoId}",
       nil,
@@ -88,7 +89,7 @@ defmodule Bunny.Net.Stream.Stream do
 
   def get_play_data(libraryId, videoId, token \\ nil, expires \\ 0) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{videoId}/play",
       nil,
@@ -103,12 +104,12 @@ defmodule Bunny.Net.Stream.Stream do
   ## Examples
 
       iex> delete("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{videoId}",
       nil,
@@ -122,12 +123,12 @@ defmodule Bunny.Net.Stream.Stream do
   ## Examples
 
       iex> update("1111-1111-1111-1111", "1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(libraryId, videoId, data) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{videoId}",
       data,
@@ -137,7 +138,7 @@ defmodule Bunny.Net.Stream.Stream do
 
   def set_thumbnail(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{videoId}/live/thumbnails",
       nil,
@@ -147,7 +148,7 @@ defmodule Bunny.Net.Stream.Stream do
 
   def get_thumbnail(libraryId, videoId, limit \\ 5, from \\ nil, to \\ nil) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{videoId}/thumbnails",
       nil,
@@ -159,7 +160,7 @@ defmodule Bunny.Net.Stream.Stream do
 
   def start(libraryId, streamId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "put",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{streamId}/start",
       nil,
@@ -169,7 +170,7 @@ defmodule Bunny.Net.Stream.Stream do
 
   def stop(libraryId, streamId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "put",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{streamId}/stop",
       nil,
@@ -179,7 +180,7 @@ defmodule Bunny.Net.Stream.Stream do
 
   def bitrate_history(libraryId, streamId, startTime \\ nil, endTime \\ nil) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{streamId}/bitrate-history",
       nil,
@@ -190,7 +191,7 @@ defmodule Bunny.Net.Stream.Stream do
 
   def current_bitrate(libraryId, streamId, startTime \\ nil, endTime \\ nil) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/live/#{streamId}/current-bitrate",
       nil,

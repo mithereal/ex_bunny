@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Shield.AccessList do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Shield.AccessList.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Shield.AccessList do
   ## Examples
 
       iex> get_by_zone("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get_by_zone(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/access-lists",
       nil,
@@ -30,12 +31,12 @@ defmodule Bunny.Net.Shield.AccessList do
   ## Examples
 
       iex> get("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(shieldZoneId, id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/access-lists/#{id}",
       nil,
@@ -49,12 +50,12 @@ defmodule Bunny.Net.Shield.AccessList do
   ## Examples
 
       iex> get_enums("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get_enums(shieldZoneId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/access-lists/enums",
       nil,
@@ -68,12 +69,12 @@ defmodule Bunny.Net.Shield.AccessList do
   ## Examples
 
       iex> create_access_list("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def create_access_list(shieldZoneId, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/access-lists",
       Jason.encode!(params),
@@ -87,12 +88,12 @@ defmodule Bunny.Net.Shield.AccessList do
   ## Examples
 
       iex> update_threat_list("1111-1111-1111-1111", "1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update_threat_list(shieldZoneId, id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/access-lists/configurations/#{id}",
       Jason.encode!(params),
@@ -106,12 +107,12 @@ defmodule Bunny.Net.Shield.AccessList do
   ## Examples
 
       iex> update("1111-1111-1111-1111", "1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(shieldZoneId, id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "patch",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/access-lists/#{id}",
       Jason.encode!(params),
@@ -125,12 +126,12 @@ defmodule Bunny.Net.Shield.AccessList do
   ## Examples
 
       iex> delete("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(shieldZoneId, id) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://api.bunny.net/shield/shield-zone/#{shieldZoneId}/access-lists/#{id}",
       nil,

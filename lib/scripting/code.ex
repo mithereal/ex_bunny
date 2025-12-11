@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Scripting.Code do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Scripting.Code.
@@ -11,12 +12,12 @@ defmodule Bunny.Net.Scripting.Code do
   ## Examples
 
       iex> get("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(id) do
     Client.new!()
-    |> Bunny.Net.request("get", "https://api.bunny.net/compute/script/#{id}/code", nil, [])
+    |> Request.request("get", "https://api.bunny.net/compute/script/#{id}/code", nil, [])
   end
 
   @doc """
@@ -25,12 +26,12 @@ defmodule Bunny.Net.Scripting.Code do
   ## Examples
 
       iex> set("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def set(id, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://api.bunny.net/compute/script/#{id}/code",
       Jason.encode!(params),

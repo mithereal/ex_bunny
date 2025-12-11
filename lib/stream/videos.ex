@@ -1,5 +1,6 @@
 defmodule Bunny.Net.Stream.Videos do
-  alias Bunny.Net.Client
+  alias Bunny.Net.Client.Client
+  alias Bunny.Net.Client.Request
 
   @moduledoc """
   Stream.Videos.
@@ -13,7 +14,7 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> list("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def list(
@@ -40,7 +41,7 @@ defmodule Bunny.Net.Stream.Videos do
       end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/videos",
       nil,
@@ -54,12 +55,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> add("1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def add(libraryId, data) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos",
       data,
@@ -73,12 +74,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> get("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def get(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}",
       nil,
@@ -88,7 +89,7 @@ defmodule Bunny.Net.Stream.Videos do
 
   def get_play_data(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/play",
       nil,
@@ -98,7 +99,7 @@ defmodule Bunny.Net.Stream.Videos do
 
   def get_video_heatmap(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/play/heatmap",
       nil,
@@ -112,12 +113,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> delete("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def delete(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}",
       nil,
@@ -131,12 +132,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> update("1111-1111-1111-1111", "1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def update(libraryId, videoId, data) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}",
       data,
@@ -150,12 +151,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> re_encode("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def re_encode(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/reencode",
       nil,
@@ -169,12 +170,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> re_package("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def re_package(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/repackage",
       nil,
@@ -188,12 +189,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> set_thumbnail("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def set_thumbnail(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/thumbnail",
       nil,
@@ -207,12 +208,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> set_caption("1111-1111-1111-1111", "1111-1111-1111-1111", "en", %{})
-      {:ok,%{}}
+
 
   """
   def set_caption(libraryId, videoId, srclang, data) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/captions/#{srclang}",
       data,
@@ -226,12 +227,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> delete_caption("1111-1111-1111-1111", "1111-1111-1111-1111", "en")
-      {:ok,%{}}
+
 
   """
   def delete_caption(libraryId, videoId, srclang) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "delete",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/captions/#{srclang}",
       nil,
@@ -245,12 +246,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> transcribe("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def transcribe(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/transcribe",
       nil,
@@ -264,12 +265,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> resolutions("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def resolutions(libraryId, videoId) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/resolutions",
       nil,
@@ -283,7 +284,7 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> cleanup_unconfigured_resolutions("1111-1111-1111-1111", "1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def cleanup_unconfigured_resolutions(
@@ -296,7 +297,7 @@ defmodule Bunny.Net.Stream.Videos do
         dryRun \\ false
       ) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/resolutions/cleanup",
       nil,
@@ -314,7 +315,7 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> statistics("1111-1111-1111-1111")
-      {:ok,%{}}
+
 
   """
   def statistics(library_id, dateFrom \\ nil, dateTo \\ nil, hourly \\ false, videoGuid \\ false) do
@@ -329,7 +330,7 @@ defmodule Bunny.Net.Stream.Videos do
     end
 
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "get",
       "https://video.bunnycdn.com/library/#{library_id}/statistics",
       nil,
@@ -343,12 +344,12 @@ defmodule Bunny.Net.Stream.Videos do
   ## Examples
 
       iex> trigger_smart_actions("1111-1111-1111-1111", "1111-1111-1111-1111", %{})
-      {:ok,%{}}
+
 
   """
   def trigger_smart_actions(libraryId, videoId, params) do
     Client.new!()
-    |> Bunny.Net.request(
+    |> Request.request(
       "post",
       "https://video.bunnycdn.com/library/#{libraryId}/videos/#{videoId}/smart",
       params,

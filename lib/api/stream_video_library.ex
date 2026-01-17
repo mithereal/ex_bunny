@@ -175,7 +175,7 @@ defmodule Bunny.Net.Api.StreamVideoLibrary do
     end
 
     Client.new!()
-    |> Request.request("get", "https://api.bunny.net/videolibrary/#{id}/statistics", nil, [])
+    |> Request.request("get", "https://api.bunny.net/videolibrary/#{id}/statistics", nil, options)
   end
 
   @doc """

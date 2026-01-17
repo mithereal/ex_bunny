@@ -160,6 +160,6 @@ defmodule Bunny.Net.Api.StorageZone do
     end
 
     Client.new!()
-    |> Request.request("get", "https://api.bunny.net/storagezone/#{id}/statistics", nil, [])
+    |> Request.request("get", "https://api.bunny.net/storagezone/#{id}/statistics", nil, options)
   end
 end

@@ -182,6 +182,6 @@ defmodule Bunny.Net.Api.DnsZone do
     options = [dateFrom: dateFrom, dateTo: dateTo]
 
     Client.new!()
-    |> Request.request("get", "https://api.bunny.net/dnszone/#{id}/statistics", nil, [])
+    |> Request.request("get", "https://api.bunny.net/dnszone/#{id}/statistics", nil, options)
   end
 end

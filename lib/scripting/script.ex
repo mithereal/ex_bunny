@@ -93,7 +93,12 @@ defmodule Bunny.Net.Scripting.Script do
     end
 
     Client.new!()
-    |> Request.request("get", "https://api.bunny.net/compute/script/#{id}/statistics", nil, [])
+    |> Request.request(
+      "get",
+      "https://api.bunny.net/compute/script/#{id}/statistics",
+      nil,
+      options
+    )
   end
 
   @doc """

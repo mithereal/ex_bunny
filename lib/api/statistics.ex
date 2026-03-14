@@ -38,7 +38,10 @@ defmodule Bunny.Net.Api.Statistics do
       loadOriginResponseTimes: loadOriginResponseTimes,
       loadOriginTraffic: loadOriginTraffic,
       loadRequestsServed: loadRequestsServed,
-      loadBandwidthUsed: loadBandwidthUsed
+      loadBandwidthUsed: loadBandwidthUsed,
+      loadOriginShieldBandwidth: loadOriginShieldBandwidth,
+      loadGeographicTrafficDistribution: loadGeographicTrafficDistribution,
+      loadUserBalanceHistory: loadUserBalanceHistory
     ]
 
     unless(is_nil(dateFrom)) do

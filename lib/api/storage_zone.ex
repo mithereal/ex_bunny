@@ -24,7 +24,7 @@ defmodule Bunny.Net.Api.StorageZone do
           [page: page, perPage: per_page, includeDeleted: includeDeleted]
 
         params ->
-          [page: page, perPage: per_page, search: search, includeDeleted: includeDeleted]
+          [page: page, perPage: per_page, search: params, includeDeleted: includeDeleted]
       end
 
     Client.new!()
